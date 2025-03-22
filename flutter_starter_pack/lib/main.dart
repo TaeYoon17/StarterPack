@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'dangun.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(const Dangun());
 }
 
 class MyApp extends StatelessWidget {
@@ -48,6 +48,30 @@ class MyApp extends StatelessWidget {
         // Image.asset("assets/Alamofire.png")
 
       // Icon(Icons.star)
+    );
+  }
+}
+
+
+class Lecture4AppBar extends StatelessWidget {
+  const Lecture4AppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(leading: Icon(Icons.star), title: Text("내 앱이다"), actions: [Icon(Icons.star)],),
+        body: SizedBox(
+          child: ElevatedButton(
+            child: Text('글자'),
+            onPressed: () {},
+            style: ButtonStyle()
+          )
+          // Text("안녕하세요",
+          //   style: TextStyle(fontWeight: FontWeight.w700),
+          // ),
+        ),
+      )
     );
   }
 }
