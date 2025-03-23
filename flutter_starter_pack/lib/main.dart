@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dangun.dart';
+import 'flexible.dart';
 void main() {
-  runApp(const Dangun());
+  runApp(const MyFlexible());
 }
 
 class MyApp extends StatelessWidget {

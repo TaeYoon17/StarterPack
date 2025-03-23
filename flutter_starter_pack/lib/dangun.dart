@@ -10,7 +10,9 @@ class Dangun extends StatelessWidget {
         appBar: AppBar(
           leading:
               // Text("광진구 천호동"),
+              // AppBar는 각 네이티브에 맞게 최적화하는게 좋을 듯 하다...
               IconButton(onPressed: (){},icon: Icon(Icons.arrow_downward))
+
         ),
         body: Container(
           height: 150,
@@ -31,7 +33,6 @@ class Dangun extends StatelessWidget {
                   children: [
                     Text("캐논 DSLR 100D ( 단렌즈, 충전기 16기가asdfasdfasdfSD 포함",
                       softWrap: true,
-                      // overflow: TextOverflow.ellipsis,
                     ),
                     Row(
                       children: [
