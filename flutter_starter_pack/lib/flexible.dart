@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 class MyFlexible extends StatelessWidget {
   const MyFlexible({super.key});
   static var flexibleChildren = [
-    Flexible(child: Container(color: Colors.blue), flex: 3),
-    Flexible(child: Container(color: Colors.green), flex: 7),
-    Flexible(child: Container(color: Colors.red), flex: 5)
+    Flexible(flex: 3, child: Container(color: Colors.blue)),
+    Flexible(flex: 7, child: Container(color: Colors.green)),
+    Flexible(flex: 5, child: Container(color: Colors.red))
   ];
 
   @override
