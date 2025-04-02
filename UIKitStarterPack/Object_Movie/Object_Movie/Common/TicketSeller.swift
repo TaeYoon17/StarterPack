@@ -17,9 +17,6 @@ class TicketSeller: Hashable, Equatable {
     
     private var id = UUID()
     private weak var ticketOffice: TicketOffice!
-//    init() {
-//        
-//    }
     
     func setTicketOffice(ticketOffice: TicketOffice) {
         self.ticketOffice = ticketOffice
