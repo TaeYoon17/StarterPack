@@ -8,20 +8,16 @@
 import Foundation
 
 class TicketOffice: Hashable, Equatable {
+    static func == (lhs: TicketOffice, rhs: TicketOffice) -> Bool { lhs.id == rhs.id }
+    func hash(into hasher: inout Hasher) { hasher.combine(id) }
     private let id: UUID = UUID()
     
     private var amount: Int = 0
     private var tickets: [Ticket] = []
     
+    /// 티켓오피스의 자본
     init(amount: Int) {
         self.amount = amount
-    }
-    
-    static func == (lhs: TicketOffice, rhs: TicketOffice) -> Bool {
-        lhs.id == rhs.id
-    }
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
     }
     
     func addTicket(ticket: Ticket) {

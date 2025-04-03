@@ -18,11 +18,26 @@ class TicketSeller: Hashable, Equatable {
     private var id = UUID()
     private weak var ticketOffice: TicketOffice!
     
+    /// 프리렌서라고 가정한다.
     func setTicketOffice(ticketOffice: TicketOffice) {
         self.ticketOffice = ticketOffice
     }
     
-    func getTicket(audience: Audience) -> Ticket {
-        
+    func getTicket(audience: Audience) -> Ticket? {
+        if audience.getInvitation() != nil {
+            let ticket = ticketOffice.getTicketWithNoFee()
+            if(ticket != nil) {
+                audience.removeInvitation()
+            }
+            return ticket
+        }
+        else if audience.hasAmount(ticketOffice.getTicketPrice()) {
+            let ticket = ticketOffice.getTicketWithFee()
+            if ticket != nil {
+                audience.minusAmount(ticketOffice.getTicketPrice())
+            }
+            return ticket
+        }
+        return nil
     }
 }

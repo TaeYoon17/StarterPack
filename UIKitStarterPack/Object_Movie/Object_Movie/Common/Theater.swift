@@ -16,7 +16,7 @@ class Theater:Equatable {
     }
     
     private var ticketOffices: [TicketOffice] = []
-    /// 금액을 알려준다.
+    /// 금액을 알려준다. 극장만이 가격을 책정할 수 있다.
     private(set) var fee: Double
     
     init(fee: Double) {
@@ -42,7 +42,7 @@ class Theater:Equatable {
     }
     
     func enter(audience: Audience) -> Bool {
-        var ticket: Ticket = audience.getTicket()
+        guard let ticket: Ticket = audience.getTicket() else { return false }
         return ticket.isValid(theater: self)
     }
 }
