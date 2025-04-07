@@ -11,7 +11,10 @@ import SwiftUI
 struct SwiftUIDILabotaryApp: App {
     var body: some Scene {
         WindowGroup {
-            SqoopResultView()
+            SqoopResultAppleMusicView()
+                .environment(
+                    MusicPlaylistViewModelFactory.getByPlatformType(.apple)
+                )
         }
     }
 }

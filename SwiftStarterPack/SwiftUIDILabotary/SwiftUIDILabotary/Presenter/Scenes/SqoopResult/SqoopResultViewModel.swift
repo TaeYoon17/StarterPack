@@ -14,7 +14,6 @@ final class MusicPlaylistViewModel {
     var musicItems: [MusicItemID]
     
     
-    
     init(useCase: MusicControlUseCase) {
         self.musicControlUseCase = useCase
         self.musicItems = useCase.getItems()
