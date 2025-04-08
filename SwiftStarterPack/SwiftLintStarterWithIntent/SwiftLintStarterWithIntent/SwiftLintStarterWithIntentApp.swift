@@ -12,6 +12,7 @@ struct SwiftLintStarterWithIntentApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: Memory.self)
         }
     }
 }
