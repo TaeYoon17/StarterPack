@@ -1,0 +1,24 @@
+{
+  "originHash" : "fe98cba864198e39b2d7340ad4d68fc2c72826a02884ec3090fe9381be463a81",
+  "pins" : [
+    {
+      "identity" : "flexlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/FlexLayout.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3cb0695742a0bd5c24ead4ae05c52aa8fa47c43d"
+      }
+    },
+    {
+      "identity" : "yoga",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/facebook/yoga.git",
+      "state" : {
+        "revision" : "042f5013152eb81c1552dec945b88f7b95ca350f",
+        "version" : "3.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}

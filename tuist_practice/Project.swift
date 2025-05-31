@@ -27,7 +27,9 @@ let project = Project(
             ),
             sources: ["tuist_practice/Sources/**"],
             resources: ["tuist_practice/Resources/**"],
-            dependencies: []
+            dependencies: [
+                .external(name: "FlexLayout")
+            ]
         ),
         .target(
             name: "tuist_practiceTests",
