@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
  
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
@@ -17,9 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
  
-        let viewController = ViewController()
+//        let viewController = ViewController()
         
-        window?.rootViewController = viewController
+        window?.rootViewController = UINavigationController(rootViewController: ShoppingSearchViewController())
         window?.makeKeyAndVisible()
     }
 }

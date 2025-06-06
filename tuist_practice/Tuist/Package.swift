@@ -8,9 +8,7 @@ import PackageDescription
         // Customize the product types for specific package product
         // Default is .staticFramework
         // productTypes: ["Alamofire": .framework,]
-        productTypes: [
-            "FlexLayout": .staticFramework
-        ]
+        productTypes: [:]
     )
 #endif
 
@@ -20,7 +18,8 @@ let package = Package(
         // Add your own dependencies here:
         // .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0"),
         // You can read more about dependencies here: https://docs.tuist.io/documentation/tuist/dependencies
-        
-        .package(url: "https://github.com/layoutBox/FlexLayout.git", branch: "master")
+        .package(url: "https://github.com/layoutBox/FlexLayout", from: "2.0.10"),
+        .package(url: "https://github.com/layoutBox/PinLayout", from: "1.10.5"),
     ]
 )
+

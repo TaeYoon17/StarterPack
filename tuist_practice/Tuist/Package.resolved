@@ -1,13 +1,22 @@
 {
-  "originHash" : "fe98cba864198e39b2d7340ad4d68fc2c72826a02884ec3090fe9381be463a81",
+  "originHash" : "493477bd48690883522f684e47ad2fc726f8f934e1a04a957f76ba19ebe885b5",
   "pins" : [
     {
       "identity" : "flexlayout",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/layoutBox/FlexLayout.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "3cb0695742a0bd5c24ead4ae05c52aa8fa47c43d"
+        "revision" : "68c784bea59e4ed905f16cc6c62d22afd34d68d9",
+        "version" : "2.2.0"
+      }
+    },
+    {
+      "identity" : "pinlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/PinLayout.git",
+      "state" : {
+        "revision" : "8eaa3a15e4dcabaca4c95aea4c0ff0c9b4a67213",
+        "version" : "1.10.5"
       }
     },
     {
