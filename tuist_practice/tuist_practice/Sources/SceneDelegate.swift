@@ -17,9 +17,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
  
-//        let viewController = ViewController()
         
-        window?.rootViewController = UINavigationController(rootViewController: ShoppingSearchViewController())
+        window?.rootViewController = TabController()
         window?.makeKeyAndVisible()
     }
 }
