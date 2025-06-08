@@ -12,16 +12,24 @@ import Combine
 final class TabController: UITabBarController {
     
     private lazy var shoppingViewControllerTab: UIViewController = {
-        let tabItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
-        let vc = ShoppingSearchViewController()
+        let tabItem = UITabBarItem(
+            title: "검색",
+            image: UIImage(systemName: "magnifyingglass"),
+            tag: 0
+        )
+        let vc = ShoppingSearchViewController(viewModel: .init())
         let nav = UINavigationController(rootViewController: vc)
         nav.tabBarItem = tabItem
         return nav
     }()
     
     private lazy var helloViewControllerTab: UIViewController = {
-        let tabItem = UITabBarItem(title: "즐겨찾기", image: UIImage(systemName: "star.fill"), tag: 1)
-        let vc = ShoppingSearchViewController()
+        let tabItem = UITabBarItem(
+            title: "즐겨찾기",
+            image: UIImage(systemName: "star.fill"),
+            tag: 1
+        )
+        let vc = ShoppingSearchViewController(viewModel: .init())
         let nav = UINavigationController(rootViewController: vc)
         nav.tabBarItem = tabItem
         return nav

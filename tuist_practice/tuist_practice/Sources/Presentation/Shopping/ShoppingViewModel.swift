@@ -8,60 +8,80 @@
 import Foundation
 import Combine
 
-protocol ViewModelType {
-    associatedtype Input
-    associatedtype Output
-    
-    func transform(input: Input) -> Output
+struct DisplayProduct {
+    var isLike: Bool
+    var title: String
 }
-
-protocol ShoppingRepositoryProtocol { }
-
-class ShoppingRepositoryDefault: ShoppingRepositoryProtocol { }
 
 final class ShoppingViewModel {
     
-    private let shoppingRepository: ShoppingRepositoryProtocol
+    private let searchUseCase: SearchProductUseCase
     
-    private var cancellables = Set<AnyCancellable>()
-    
-    struct Input {
-        let viewDidLoad: AnyPublisher<Void, Never>
-        let refreshTrigger: AnyPublisher<Void, Never>
-        let createUserTrigger: AnyPublisher<(name: String, email: String), Never>
+    enum Action {
+        case requestSearchItems(term: String)
+        case heartTapped
     }
     
-    struct Output {
-        var items: CurrentValueSubject<[String], Never>
-        let isLoading: AnyPublisher<Bool, Never>
-        let error: AnyPublisher<String?, Never>
-        let userCreated: AnyPublisher<String, Never>
+    enum Mutation {
+        case setItemLike(Bool)
+        case fetchItems([DisplayProduct])
+    }
+    
+    struct State {
+        var products: [DisplayProduct] = []
     }
     
     // MARK: - Subjects
-    private let usersSubject = CurrentValueSubject<[String], Never>([])
-    private let loadingSubject = CurrentValueSubject<Bool, Never>(false)
-    private let errorSubject = CurrentValueSubject<String?, Never>(nil)
-    private let userCreatedSubject = PassthroughSubject<String, Never>()
+    @Published private(set) var state = State()
+    private let actionSubject: PassthroughSubject<Action, Never> = .init()
+    private let mutationSubject: PassthroughSubject<Mutation, Never> = .init()
+    private var cancellables = Set<AnyCancellable>()
     
-    init(shoppingRepository: ShoppingRepositoryProtocol = ShoppingRepositoryDefault()) {
-        self.shoppingRepository = shoppingRepository
-    }
-    
-    func transform(input: Input) -> Output {
+    init(searchUseCase: SearchProductUseCase = DefaultSearchProduct()) {
+        self.searchUseCase = searchUseCase
         
-        Publishers.Merge(input.refreshTrigger, input.viewDidLoad)
-            .sink { [weak self] _ in
-                guard let self else { return }
+        let actionMutationPublisher: AnyPublisher<Mutation, Never> = actionSubject.flatMap {
+            self.mutate(action: $0)
+        }.eraseToAnyPublisher()
+        
+        transform(mutation: actionMutationPublisher)
+            .scan(state) { [unowned self] state, mutation in
+                self.reduce(state: state, mutation: mutation)
+            }
+            .sink { [weak self] newState in
+                self?.state = newState
             }
             .store(in: &cancellables)
-        
-        return Output(
-            items: .init(["Hello"]),
-            isLoading: loadingSubject.eraseToAnyPublisher(),
-            error: errorSubject.eraseToAnyPublisher(),
-            userCreated: userCreatedSubject.eraseToAnyPublisher()
-        )
+    }
+    
+    func action(_ action: Action) {
+        actionSubject.send(action)
+    }
+    
+    // MARK: - Private
+    private func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
+        var state = self.state // 현재 State 값 캡쳐링
+        switch action {
+        case .heartTapped:
+            return Just(Mutation.setItemLike(false)).eraseToAnyPublisher()
+        case .requestSearchItems(term: let terms):
+            return Just(Mutation.setItemLike(false)).eraseToAnyPublisher()
+        }
+    }
+    
+    private func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
+        mutation
+    }
+
+    private func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        switch mutation {
+        case .setItemLike(let isLike): break
+//            newState.products[0].isLike = isLike
+        case .fetchItems(let items):
+            newState.products = items
+        }
+        return newState
     }
     
 }

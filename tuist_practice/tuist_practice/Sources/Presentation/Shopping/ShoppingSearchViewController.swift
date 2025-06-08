@@ -10,26 +10,39 @@ import Combine
 import FlexLayout
 import PinLayout
 
-
-
 final class ShoppingSearchViewController: UIViewController {
+    
     enum SectionType: Int {
         case filter
         case products
     }
+    
     // MARK: -- View Properties...
-    private lazy var shoppingListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+    private lazy var shoppingListCollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: collectionViewLayout
+    )
+    
+    private let button = UIButton()
     private let navigationSearchController = UISearchController()
+    private let refreshControl = UIRefreshControl()
     private let rootContainerView: UIView = UIView()
     
     // MARK: -- Private Properties...
     private let viewModel: ShoppingViewModel
+    var dataSource: ShoppingSearchDataSource!
+    
+    
+    // MARK: -- Combine Subject
+    let viewDidLoadSubject = PassthroughSubject<(), Never>()
+    let refreshSubject = PassthroughSubject<(), Never>()
+    
+    var cancellables = Set<AnyCancellable>()
     
     // MARK: -- Init...
     init(viewModel: ShoppingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
         view.addSubview(rootContainerView)
         rootContainerView.flex.direction(.column).define { flex in
             
@@ -40,10 +53,14 @@ final class ShoppingSearchViewController: UIViewController {
         fatalError("Don't use StoryBoard")
     }
     
+    func bind() { }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         configureView()
+        
+        viewModel.action(.heartTapped)
     }
     
     // viewIsAppearing은 transition중에 한번만 호출되고 view가 나타날때 레이아웃이 필요하지 않더라도 호출됩니다.
@@ -72,11 +89,11 @@ final class ShoppingSearchViewController: UIViewController {
 
 extension ShoppingSearchViewController: UICollectionViewDelegate {
     func configureCollectionView() {
-        
+        self.shoppingListCollectionView.refreshControl = refreshControl
     }
     
     var collectionViewLayout: UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { [weak self] idx, environment in
+        UICollectionViewCompositionalLayout { idx, environment in
             guard let sectionType = SectionType(rawValue: idx) else {
                 assertionFailure("Don't exist items")
                 return NSCollectionLayoutSection.list(using: .init(appearance: .plain), layoutEnvironment: environment)
@@ -94,5 +111,31 @@ extension ShoppingSearchViewController: UICollectionViewDelegate {
                 return section
             }
         }
+    }
+    struct Item: Hashable {
+        
+    }
+}
+
+extension ShoppingSearchViewController {
+    final class ShoppingSearchDataSource: UICollectionViewDiffableDataSource<SectionType,Item> {
+        weak var viewModel: ShoppingViewModel!
+        var cancellables = Set<AnyCancellable>()
+        init(
+            viewModel: ShoppingViewModel,
+            collectionView: UICollectionView,
+            cellProvider: @escaping UICollectionViewDiffableDataSource<ShoppingSearchViewController.SectionType, ShoppingSearchViewController.Item>.CellProvider
+        ) {
+            self.viewModel = viewModel
+            super.init(collectionView: collectionView, cellProvider: cellProvider)
+            bind()
+        }
+        
+        func bind() {
+            viewModel.$state.sink { [weak self] state in
+                guard let self else { return }
+            }.store(in: &cancellables)
+        }
+        
     }
 }
