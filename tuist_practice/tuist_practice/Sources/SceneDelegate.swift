@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
  
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
@@ -17,10 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
  
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .orange
         
-        window?.rootViewController = viewController
+        window?.rootViewController = TabController()
         window?.makeKeyAndVisible()
     }
 }
