@@ -7,21 +7,42 @@
 
 import Foundation
 
-//<title>허니트립 보스턴백</title>
-//<link>http://openapi.naver.com/l?AAABWLsQ7CIBRFv+Z1JLzSShkYqLajRmPcG6TQRCgiNunfizdnODnJfX9N2iUMCnoKHYWh/4sSlUtmli7nCExBPRY+bo1xCZaEaTOJ6NWXaKdsSHAB2Lg8gZ2QMmybA0cuqiyx4W0ZZR2KrvJyx2CPV3RQ95fbnDT3r+Fh2kbfz5su7x8wIs7ZjgAAAA==</link>
-//<image>http://shopping.phinf.naver.net/main_1031546/10315467179.jpg</image>
-//<lprice>6700</lprice>
-//<hprice>0</hprice>
-//<mallName>허니트립</mallName>
-//<productId>10315467179</productId>
-//<productType>2</productType>
-//<brand></brand>
-//<maker>허니트립</maker>
-//<category1>패션잡화</category1>
-//<category2>여행용가방/소품</category2>
-//<category3>보스턴백</category3>
-//<category4></category4>
-
 struct NaverProductDTO: Codable {
+    let title: String
+    let link: String
+    let image: String
+    let lprice: String      // 최저가 (문자열로 전송됨)
+    let hprice: String      // 최고가 (문자열로 전송됨)
+    let mallName: String
+    let productId: String
+    let productType: String
+    let brand: String
+    let maker: String
+    let category1: String
+    let category2: String
+    let category3: String
+    let category4: String
+}
+
+// MARK: - Convenience Extensions
+extension NaverProductDTO {
+    /// lprice를 Int로 변환하는 computed property
+    var lowestPriceInt: Int? {
+        Int(lprice)
+    }
     
+    /// hprice를 Int로 변환하는 computed property
+    var highestPriceInt: Int? {
+        Int(hprice)
+    }
+    
+    /// productId를 Int로 변환하는 computed property
+    var productIdInt: Int? {
+        Int(productId)
+    }
+    
+    /// HTML 태그가 포함된 title을 정리하는 computed property
+    var cleanTitle: String {
+        title.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
 }

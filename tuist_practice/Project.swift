@@ -27,17 +27,19 @@ let project = Project(
             ),
             sources: ["tuist_practice/Sources/**"],
             resources: ["tuist_practice/Resources/**"],
+            scripts: [ TargetScript.SwiftLintShell ],
             dependencies: [
                 .external(name: "FlexLayout"),
                 .external(name: "PinLayout"),
             ],
+            
             settings:
                 // FlexLayout (C++로 제작됨)을 이용하기 위한 프로젝트 설정
-                    .settings(
-                        base: [
-                            "OTHER_LDFLAGS": ["-ObjC"]
-                        ],
-                        configurations: [
+                .settings(
+                    base: [
+                        "OTHER_LDFLAGS": ["-ObjC"]
+                    ],
+                    configurations: [
                         .debug(name: "Debug", settings: [
                             "GCC_PREPROCESSOR_DEFINITIONS": ["DEBUG=1", "OTHER_MACRO=1", "FLEXLAYOUT_SWIFT_PACKAGE=1"],
                         ]),
@@ -45,7 +47,7 @@ let project = Project(
                             "GCC_PREPROCESSOR_DEFINITIONS": ["RELEASE=1", "FLEXLAYOUT_SWIFT_PACKAGE=1"],
                         ])
                     ]
-                    )
+                )
         ),
         .target(
             name: "tuist_practiceTests",
@@ -55,7 +57,9 @@ let project = Project(
             infoPlist: .default,
             sources: ["tuist_practice/Tests/**"],
             resources: [],
-            dependencies: [.target(name: "tuist_practice")]
+            dependencies: [
+                .target(name: "tuist_practice")
+            ]
         ),
     ]
 )

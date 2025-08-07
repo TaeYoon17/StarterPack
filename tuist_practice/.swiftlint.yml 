@@ -1,0 +1,64 @@
+# ✅ 분석할 디렉터리 지정
+included:
+  - Sources
+  - App
+  - Tests
+
+# ❌ 분석 제외할 디렉터리 (외부 라이브러리, 생성된 파일 등)
+excluded:
+  - Pods
+  - Carthage
+  - Tuist
+  - fastlane
+  - Generated
+
+# ❌ 기본적으로 비활성화할 규칙 목록 (개발 중 스트레스를 줄이기 위함)
+disabled_rules:
+  - force_cast              # 강제 캐스팅 허용 (초보자에게 필요할 수도 있음)
+  - force_try               # try! 허용
+  - trailing_whitespace     # 줄 끝 공백 무시
+  - identifier_name         # 변수/함수 이름 길이 제한 제거
+  - line_length             # 한 줄 길이 제한 제거 (아래에 따로 설정함)
+  - cyclomatic_complexity   # 복잡도 제한 제거
+  - function_body_length    # 함수 길이 제한 제거
+  - type_body_length        # 클래스/구조체 길이 제한 제거
+  - trailing_whitespace
+
+# ✅ 개발 품질을 위해 적극적으로 사용하는 규칙들
+opt_in_rules:
+  - unused_declaration      # 사용되지 않는 변수/함수 경고
+  - closure_end_indentation # 클로저 종료 들여쓰기 일관성
+  - empty_count             # isEmpty 권장
+  - explicit_init           # 명시적 이니셜라이저 권장
+  - fatal_error_message     # fatalError에는 메시지를 명시
+  - let_var_whitespace      # let/var 뒤 공백 체크
+  - nimble_operator         # Nimble 사용 시 == 대신 표현식 사용 권장
+  - redundant_nil_coalescing # 불필요한 nil 병합 연산자 제거
+  - sorted_imports          # import 순서 정렬
+  - toggle_bool             # bool = !bool 대신 toggle() 사용 권장
+  - unneeded_break_in_switch # switch문 내 불필요한 break 제거
+
+# 📏 한 줄 최대 길이 설정
+line_length:
+  warning: 150               # 경고 기준: 150자
+  error: 200                 # 오류 기준: 200자
+  ignores_comments: true     # 주석은 무시
+  ignores_urls: true         # URL은 무시
+
+# 🔁 switch문에서 case 들여쓰기 정렬
+switch_case_alignment:
+  severity: warning
+
+# 🔤 타입 이름 길이 제한 완화
+type_name:
+  min_length: 2
+  max_length: 40
+  excluded:
+    - ID
+    - URL
+
+# ❗ 옵셔널 강제 언래핑 경고
+force_unwrapping: warning
+
+# 🧾 출력 형식 (Xcode와 잘 맞는 형식)
+reporter: xcode
