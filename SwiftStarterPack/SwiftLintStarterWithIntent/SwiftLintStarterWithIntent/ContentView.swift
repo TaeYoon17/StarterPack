@@ -31,6 +31,11 @@ class Memory {
 struct ContentView: View {
     @Query(sort: [.init(\Memory.date, order: .reverse)], animation: .smooth)
     var memories: [Memory]
+    
+    init() {
+        AddMemoryShortcut.updateAppShortcutParameters()
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -46,6 +51,12 @@ struct ContentView: View {
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Memories")
+            .safeAreaInset(edge: .bottom) {
+            }
+            
+            //            Button(intent: PlayMusicIntent()() {
+            //                Text("음악 선택하기")
+            //            }
         }
     }
 }
@@ -59,54 +70,38 @@ struct ContentView: View {
 /// creating a new shortcut from the Shortcuts app.
 /// => 사용자가 새로운 단축어를 만들 때, 이 App-Intent를 그 단축어에 포함할 수 있다.
 
-struct AddMemoryIntent: AppIntent {
-    
-    @Parameter(
-        title: .init(stringLiteral: "Choose a Image"),
-        description: "The trail to get information on.",
-        supportedContentTypes: [.image],
-        inputConnectionBehavior: .connectToPreviousIntentResult
-    )
-    var imageFile: IntentFile
-    
-    @Parameter(title: "Caption")
-    var caption: String
-    
-    static var title: LocalizedStringResource = "Add New Memory"
-    
-    func perform() async throws -> some IntentResult & ProvidesDialog {
-        let container = try ModelContainer(for: Memory.self)
-        let context = ModelContext(container)
-        
-        let imageData = try await imageFile.data(contentType: .image)
-        let memory = Memory(caption: caption, date: .init(), imageData: imageData)
-        
-        context.insert(memory)
-        try context.save()
-        
-        return .result(dialog: "Memory added successfully!")
-    }
-//    func perform() async throws -> some IntentResult & ReturnsValue<Int> {
-//        return .result(value: 2)
-//    }
-}
-
 struct AddMemoryShortcut: AppShortcutsProvider {
-    static var appShortcuts: [AppShortcut] {
+    static var appShortcuts: [AppShortcut] = [
         AppShortcut(
             intent: AddMemoryIntent(),
             phrases: [
                 "Create a new \(.applicationName) memory"
             ],
             shortTitle: "Creat New Memory",
-            systemImageName: "memories")
-    }
-    
+            systemImageName: "memories"
+        ),
+        // PlayMusicIntent의 genre 파라미터(MusicGenre)를 특정 값으로 넘기고 싶다면,
+        // intent 생성 시 파라미터를 명시적으로 지정하면 됩니다.
+        // 예시: genre에 .rock을 넘기고 싶을 때
+    ]
 }
 
 
-struct IntentView: View {
-    var body: some View {
-        Text("IntentView")
-    }
-}
+/* 제어센터에서 열어 줄 수 있는 역할을 하는 것 같다...
+ struct SelectFocusIntent: ControlConfigurationIntent {
+ static let title: LocalizedStringResource = "Select Focus"
+ static let description: IntentDescription = "Turn Focus on to silence notifications and filter out distractions."
+ 
+ 
+ struct FocusOptionsProvider: DynamicOptionsProvider {
+ 
+ func results() async throws -> [Focus] {
+ FocusManager.shared.allFocuses
+ }
+ }
+ 
+ 
+ @Parameter(title: "Focus", default: .doNotDisturb, optionsProvider: FocusOptionsProvider())
+ var focus: Focus
+ }
+ */

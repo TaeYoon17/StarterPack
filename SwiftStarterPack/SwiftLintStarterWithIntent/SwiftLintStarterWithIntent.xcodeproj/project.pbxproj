@@ -8,17 +8,71 @@
 
 /* Begin PBXBuildFile section */
 		63771FE52DA53B420047A30D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 63771FE42DA53B420047A30D /* .swiftlint.yml */; };
+		63852E0C2E45A63400281E43 /* AddMemoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63852E0B2E45A63400281E43 /* AddMemoryIntent.swift */; };
+		63852E322E45B19F00281E43 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63852E312E45B19E00281E43 /* WidgetKit.framework */; };
+		63852E342E45B19F00281E43 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63852E332E45B19F00281E43 /* SwiftUI.framework */; };
+		63852E442E45B1A000281E43 /* linkinputExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 63852E2F2E45B19E00281E43 /* linkinputExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		63852F5B2E45CAD600281E43 /* MyIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63852F5A2E45CAD600281E43 /* MyIntent.swift */; };
+		63852F5C2E45CAF800281E43 /* MyIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63852F5A2E45CAD600281E43 /* MyIntent.swift */; };
+		63852F5D2E45CBB400281E43 /* AddMemoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63852E0B2E45A63400281E43 /* AddMemoryIntent.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63852E412E45B1A000281E43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63771FCA2DA539010047A30D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63852E2E2E45B19E00281E43;
+			remoteInfo = linkinputExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		63852E432E45B1A000281E43 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				63852E442E45B1A000281E43 /* linkinputExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		63771FD22DA539010047A30D /* SwiftLintStarterWithIntent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLintStarterWithIntent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63771FE42DA53B420047A30D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		63852E0B2E45A63400281E43 /* AddMemoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoryIntent.swift; sourceTree = "<group>"; };
+		63852E2F2E45B19E00281E43 /* linkinputExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = linkinputExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		63852E312E45B19E00281E43 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		63852E332E45B19F00281E43 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		63852F5A2E45CAD600281E43 /* MyIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		63852E452E45B1A000281E43 /* Exceptions for "linkinput" folder in "linkinputExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 63852E2E2E45B19E00281E43 /* linkinputExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63771FD42DA539010047A30D /* SwiftLintStarterWithIntent */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SwiftLintStarterWithIntent;
+			sourceTree = "<group>";
+		};
+		63852E352E45B19F00281E43 /* linkinput */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				63852E452E45B1A000281E43 /* Exceptions for "linkinput" folder in "linkinputExtension" target */,
+			);
+			path = linkinput;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -31,14 +85,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63852E2C2E45B19E00281E43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63852E342E45B19F00281E43 /* SwiftUI.framework in Frameworks */,
+				63852E322E45B19F00281E43 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		63771FC92DA539010047A30D = {
 			isa = PBXGroup;
 			children = (
+				63852F592E45CACA00281E43 /* AppIntents */,
 				63771FE42DA53B420047A30D /* .swiftlint.yml */,
 				63771FD42DA539010047A30D /* SwiftLintStarterWithIntent */,
+				63852E352E45B19F00281E43 /* linkinput */,
+				63852E302E45B19E00281E43 /* Frameworks */,
 				63771FD32DA539010047A30D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,8 +113,27 @@
 			isa = PBXGroup;
 			children = (
 				63771FD22DA539010047A30D /* SwiftLintStarterWithIntent.app */,
+				63852E2F2E45B19E00281E43 /* linkinputExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		63852E302E45B19E00281E43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63852E312E45B19E00281E43 /* WidgetKit.framework */,
+				63852E332E45B19F00281E43 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63852F592E45CACA00281E43 /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				63852E0B2E45A63400281E43 /* AddMemoryIntent.swift */,
+				63852F5A2E45CAD600281E43 /* MyIntent.swift */,
+			);
+			path = AppIntents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -61,12 +146,13 @@
 				63771FCE2DA539010047A30D /* Sources */,
 				63771FCF2DA539010047A30D /* Frameworks */,
 				63771FD02DA539010047A30D /* Resources */,
-				63771FE82DA53C1E0047A30D /* ShellScript */,
+				63852E432E45B1A000281E43 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				63771FE72DA53BB10047A30D /* PBXTargetDependency */,
+				63852E422E45B1A000281E43 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				63771FD42DA539010047A30D /* SwiftLintStarterWithIntent */,
@@ -77,6 +163,28 @@
 			productName = SwiftLintStarterWithIntent;
 			productReference = 63771FD22DA539010047A30D /* SwiftLintStarterWithIntent.app */;
 			productType = "com.apple.product-type.application";
+		};
+		63852E2E2E45B19E00281E43 /* linkinputExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63852E462E45B1A000281E43 /* Build configuration list for PBXNativeTarget "linkinputExtension" */;
+			buildPhases = (
+				63852E2B2E45B19E00281E43 /* Sources */,
+				63852E2C2E45B19E00281E43 /* Frameworks */,
+				63852E2D2E45B19E00281E43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				63852E352E45B19F00281E43 /* linkinput */,
+			);
+			name = linkinputExtension;
+			packageProductDependencies = (
+			);
+			productName = linkinputExtension;
+			productReference = 63852E2F2E45B19E00281E43 /* linkinputExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -89,6 +197,9 @@
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					63771FD12DA539010047A30D = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					63852E2E2E45B19E00281E43 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -111,6 +222,7 @@
 			projectRoot = "";
 			targets = (
 				63771FD12DA539010047A30D /* SwiftLintStarterWithIntent */,
+				63852E2E2E45B19E00281E43 /* linkinputExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -124,33 +236,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		63771FE82DA53C1E0047A30D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
+		63852E2D2E45B19E00281E43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# 기기가 arm64 - 애플 실리콘이면 현재 경로를 홈브류 경로로 이동시킨다.\nif [[ \"$(uname -m)\" == arm64 ]]; then \n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\n# 명령어의 출력을 버리는(화면에 표시하지 않는) 리다이렉션입니다\nif which swiftlint >/dev/null; then  \n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-/* End PBXShellScriptBuildPhase section */
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63771FCE2DA539010047A30D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63852F5B2E45CAD600281E43 /* MyIntent.swift in Sources */,
+				63852E0C2E45A63400281E43 /* AddMemoryIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63852E2B2E45B19E00281E43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63852F5D2E45CBB400281E43 /* AddMemoryIntent.swift in Sources */,
+				63852F5C2E45CAF800281E43 /* MyIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +270,11 @@
 		63771FE72DA53BB10047A30D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 63771FE62DA53BB10047A30D /* SwiftLintBuildToolPlugin */;
+		};
+		63852E422E45B1A000281E43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63852E2E2E45B19E00281E43 /* linkinputExtension */;
+			targetProxy = 63852E412E45B1A000281E43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -297,8 +412,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,8 +440,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +448,60 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arpple.tistory.SwiftLintStarterWithIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		63852E472E45B1A000281E43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3W9F68ZTUJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = linkinput/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = linkinput;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arpple.tistory.SwiftLintStarterWithIntent.linkinput;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63852E482E45B1A000281E43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3W9F68ZTUJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = linkinput/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = linkinput;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arpple.tistory.SwiftLintStarterWithIntent.linkinput;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,6 +525,15 @@
 			buildConfigurations = (
 				63771FE12DA539020047A30D /* Debug */,
 				63771FE22DA539020047A30D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63852E462E45B1A000281E43 /* Build configuration list for PBXNativeTarget "linkinputExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63852E472E45B1A000281E43 /* Debug */,
+				63852E482E45B1A000281E43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
